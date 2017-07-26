@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,6 +14,12 @@ import java.util.ArrayList;
 
 public class ListViewAdapter extends BaseAdapter {
     private ArrayList<ListViewItem> arrayList = new ArrayList<ListViewItem>();
+    Context context;
+
+    public ListViewAdapter(ArrayList<ListViewItem> arrayList, Context context) {
+        this.arrayList = arrayList;
+        this.context = context;
+    }
 
     public ListViewAdapter() {  }
 
@@ -37,7 +41,6 @@ public class ListViewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
-        final Context context = parent.getContext();
 
         TextView date = (TextView) convertView.findViewById(R.id.setDate);
         TextView time = (TextView) convertView.findViewById(R.id.setTime);
@@ -50,10 +53,9 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(String title, String date, String time, Switch onOff){
+    public void addItem(String date, String time){
         ListViewItem item = new ListViewItem();
 
-        item.setTitle(title);
         item.setDate(date);
         item.setTime(time);
 

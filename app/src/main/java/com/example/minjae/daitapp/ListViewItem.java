@@ -7,26 +7,8 @@ import android.widget.Switch;
  */
 
 public class ListViewItem {
-    private String title;
-    private Switch onOff;
     private String date;
     private String time;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Switch getOnOff() {
-        return onOff;
-    }
-
-    public void setOnOff(Switch onOff) {
-        this.onOff = onOff;
-    }
 
     public String getDate() {
         return date;
