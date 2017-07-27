@@ -7,22 +7,49 @@ import android.widget.Switch;
  */
 
 public class ListViewItem {
-    private String date;
-    private String time;
+    private int year;
+    private int month;
+    private int day;
+    private int hour;
+    private int minute;
 
-    public String getDate() {
-        return date;
+    public int getYear() {
+        return year;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setYear(int year) {
+        this.year = year;
     }
 
-    public String getTime() {
-        return time;
+    public int getMonth() {
+        return month;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
     }
 }

@@ -6,23 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:weightSum="4"
     tools:context="com.example.minjae.daitapp.AddActivity">
 
     <TextView
         android:id="@+id/setDate"
         android:text="Press here to set DATE"
-        android:layout_weight="1"
         android:textSize="30sp"
+        android:paddingTop="150dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
 
     <TextView
         android:id="@+id/setTime"
-        android:layout_weight="1"
         android:text="Press here to set TIME"
         android:textSize="30sp"
+        android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

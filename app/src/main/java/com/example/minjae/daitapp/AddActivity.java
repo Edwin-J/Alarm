@@ -1,11 +1,20 @@
 package com.example.minjae.daitapp;
 
+import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
 import android.app.TimePickerDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
+import android.os.IBinder;
 import android.support.annotation.CheckResult;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +27,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class AddActivity extends AppCompatActivity {
@@ -39,10 +50,21 @@ public class AddActivity extends AppCompatActivity {
     public DatePickerDialog datePickerDialog;
     public TimePickerDialog timePickerDialog;
 
+    public Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        
+        intent = new Intent();
+        intent.putExtra("year", 2017);
+        intent.putExtra("month", 7);
+        intent.putExtra("day", 27);
+        intent.putExtra("hour", 1);
+        intent.putExtra("minute", 30);
+        intent.putExtra("fast_date", "20170727");
+        intent.putExtra("fast_time", "1540");
 
         setDate = (TextView) findViewById(R.id.setDate);
         setTime = (TextView) findViewById(R.id.setTime);
@@ -70,13 +92,16 @@ public class AddActivity extends AppCompatActivity {
                 timePickerDialog.show();
             }
         });
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("date", ""+date);
-                intent.putExtra("time", ""+time);
+                if(checkBox.isChecked()){
+                    intent.putExtra("fast_date", date);
+                    intent.putExtra("fast_time", time);
+                }
                 setResult(RESULT_OK, intent);
+                finish();
             }
         });
     }
@@ -86,13 +111,19 @@ public class AddActivity extends AppCompatActivity {
         public void onDateSet(DatePicker view, int year, int month, int day) {
             date = year + "-" + month + "-" + day;
             setDate.setText(date);
+            intent.putExtra("year", year);
+            intent.putExtra("month", month);
+            intent.putExtra("day", day);
         }
     };
+
     private TimePickerDialog.OnTimeSetListener timeListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hour, int minute) {
             time = hour + ":" + minute;
             setTime.setText(time);
+            intent.putExtra("hour", hour);
+            intent.putExtra("minute", minute);
         }
     };
 
