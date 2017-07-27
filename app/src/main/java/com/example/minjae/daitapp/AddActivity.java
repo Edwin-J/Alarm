@@ -56,15 +56,13 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        
+
         intent = new Intent();
         intent.putExtra("year", 2017);
         intent.putExtra("month", 7);
         intent.putExtra("day", 27);
         intent.putExtra("hour", 1);
         intent.putExtra("minute", 30);
-        intent.putExtra("fast_date", "20170727");
-        intent.putExtra("fast_time", "1540");
 
         setDate = (TextView) findViewById(R.id.setDate);
         setTime = (TextView) findViewById(R.id.setTime);

@@ -39,6 +39,7 @@
         android:layout_margin="30dp"
         android:textSize="30sp"
         android:text="기본 알람"
+        android:backgroundTint="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

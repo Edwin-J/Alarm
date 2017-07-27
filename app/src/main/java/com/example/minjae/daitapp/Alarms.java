@@ -39,6 +39,9 @@ public class Alarms extends AppCompatActivity {
     public int hour;
     public int minute;
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +91,8 @@ public class Alarms extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
+                String alarms[] = {"alarm1", "alarm2", "alarm3", "alarm4", "alarm5"};
+
                 year = data.getExtras().getInt("year");
                 month = data.getExtras().getInt("month");
                 day = data.getExtras().getInt("day");
@@ -95,6 +100,7 @@ public class Alarms extends AppCompatActivity {
                 minute = data.getExtras().getInt("minute");
                 adapter.addItem(year, month, day, hour, minute);
                 adapter.notifyDataSetChanged();
+
                 Toast.makeText(getApplicationContext(), "Success.", Toast.LENGTH_SHORT).show();
             }
             else {
